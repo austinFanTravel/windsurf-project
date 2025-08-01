@@ -1,0 +1,12 @@
+[Unit]
+Description=LiveWebScraper API Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/livewebscraper
+ExecStart=/home/ubuntu/.local/bin/gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
